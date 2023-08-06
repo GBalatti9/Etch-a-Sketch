@@ -4,8 +4,8 @@ window.onload = () => {
     container.style.border = '.5px solid black'
     container.style.display = 'flex';
     container.style.flexWrap = 'wrap';
-    container.style.width = '504px';
-    container.style.height = '504px'
+    container.style.width = '500px';
+    container.style.height = '500px'
     container.style.overflow = 'hidden'
     container.style.margin = 'auto'
     console.log(container);
