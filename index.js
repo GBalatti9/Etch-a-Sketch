@@ -38,22 +38,24 @@ window.onload = () => {
         })
     })
 
-    
     clear.addEventListener('click', () => {
         pixelDOM.forEach(pixel => {
             pixel.style.backgroundColor = 'white'
         })
     })
 
-    const changeSizePx = document.querySelector('#px');
-    changeSizePx.addEventListener('click', () => {
+    const changeSizePx = document.getElementById('number-px');
+    // console.log(changeSizePx);
+    changeSizePx.addEventListener('input', (e) => {
+        let pxs = e.target.value
+
         pixelDOM.forEach(pixel => {
-            pixel.style.backgroundColor = 'white'
-            pixel.style.width = '50px'
-            pixel.style.height = '50px'
+            if (pxs >= 16 && pxs <= 100) {
+                pixel.style.width = `${pxs}px`;
+                pixel.style.height = `${pxs}px`;
+            }
         })
     })
-
 
     console.log(color.value);
 }
