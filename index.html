@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Etch-a-Sketch</h1>
-    <div class="settings">
-        <h3>Pick a color</h3>
-        <input type="color" value="#ff0000" id="color">
-        <br>
-        <input type="button" value="Eraser" id="eraser">
-        <br>
-        <input type="button" value="Clear" id="clear">
-        <h3>Change the size of the px</h3>
-        <input type="number" id="number-px" min="16" max="100">
-        <p>Min: 16</p>
-        <p>Max: 100</p>
-    </div>
-    <div class="container">
 
+<body>
+    <h1 class="title">Etch-a-Sketch</h1>
+    <div class="elements-container">
+        <div class="settings">
+            <h3>Pick a color</h3>
+            <input type="color" value="#ff0000" id="color">
+            <br>
+            <input type="button" value="Eraser" id="eraser">
+            <input type="button" value="Clear" id="clear">
+            <br>
+            <input type="button" value="Rainbow" id="rainbow">
+            <!-- <input type="button" value="Crazy" id="crazy"> -->
+            <h3 class="subtitle">Change the pixels</h3>
+            <input type="number" id="number-px" min="16" max="100">
+            <div class="size">
+                <p>Min: 16</p>
+                <p>Max: 100</p>
+            </div>
+            <label for="grid-state"></label>
+            <input type="checkbox" id="grid-state">
+        </div>
+        <div class="container">
+
+        </div>
     </div>
     <script src="index.js"></script>
 </body>
+
 </html>

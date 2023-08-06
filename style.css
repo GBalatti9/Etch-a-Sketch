@@ -2,6 +2,70 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #ebebeb;
+    font-family: sans-serif;
+}
+
+.title{
+    text-align: center;
+    padding: 30px;
+}
+
+
+h3{
+    font-size: 20px;
+}
+
+.elements-container{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    width: 50%;
+}
+
+.settings{
+    margin: auto;
+    height: 50%;
+    text-align: center;
+    width: 30%;
+}
+
+#color{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+#eraser, #clear{
+    border-radius: 5px;
+    padding: 3%;
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.subtitle{
+    margin-bottom: 5px;
+}
+
+#number-px{
+    background-color: rgb(84, 84, 84);
+    border: 1px solid rgb(221, 221, 221);
+    padding: 3%;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.size{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
 }
 
 .container{
