@@ -21,7 +21,15 @@ window.onload = () => {
         })
     })
 
+    chooseColor.addEventListener('click', () => {
+        pixelDOM.forEach(pixel => {
+            pixel.addEventListener('mouseover', () => {
+                pixel.style.backgroundColor = chooseColor.value;
+            })
+        })
+    })
     eraser.addEventListener('click', () => {
+        container.classList.add('erase-cursor')
         chooseColor.value = '#ffffff'
         pixelDOM.forEach(pixel => {
             pixel.addEventListener('mouseover', () => {
