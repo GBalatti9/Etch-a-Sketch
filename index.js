@@ -1,21 +1,19 @@
 window.onload = () => {
 
     const container = document.querySelector('.container');
-    container.style.border = '.5px solid black'
-    container.style.display = 'flex';
-    container.style.flexWrap = 'wrap';
-    container.style.width = '500px';
-    container.style.height = '500px'
-    container.style.overflow = 'hidden'
-    container.style.margin = 'auto'
     console.log(container);
     const createGridPx = () => {
-        for (let i = 0; i <= 1000; i++) {
+        const numberOfPx = 1024;
+        const containerWidth = 500; // Width of the container in pixels
+        const pixelsPerRow = 32; // Number of pixels to display in each row
+        const pixelSize = containerWidth / pixelsPerRow; // Calculate the size of each pixel
+
+        for (let i = 0; i <= numberOfPx; i++) {
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
-            pixel.style.width = '16px'
-            pixel.style.height = '16px'
-            pixel.style.border = '.5px solid black'
+            pixel.style.width = `${pixelSize}px`;
+            pixel.style.height = `${pixelSize}px`;
+            // pixel.style.border = '.5px solid black';
 
             container.appendChild(pixel);
         }
@@ -26,6 +24,15 @@ window.onload = () => {
     pixelDOM.forEach(pixel => {
         pixel.addEventListener('mouseover', () => {
             pixel.style.backgroundColor = 'red';
+        })
+    })
+
+    const px = document.querySelector('#px');
+    px.addEventListener('click', () => {
+        pixelDOM.forEach(pixel => {
+            pixel.style.backgroundColor = 'white'
+            pixel.style.width = '50px'
+            pixel.style.height = '50px'
         })
     })
 
