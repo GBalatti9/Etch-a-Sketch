@@ -10,7 +10,7 @@ window.onload = () => {
         }
     }
     createGridPx();
-
+    const colorMode = document.getElementById('color-mode');
     const pixelDOM = Array.from(document.querySelectorAll('.pixel'));
     const chooseColor = document.getElementById('color');
     const eraser = document.getElementById('eraser');
@@ -22,25 +22,54 @@ window.onload = () => {
     })
 
     chooseColor.addEventListener('click', () => {
+        colorMode.classList.add('box-shadow');
+        clear.classList.remove('box-shadow');
+        eraser.classList.remove('box-shadow');
+        rainbow.classList.remove('box-shadow');
+
         pixelDOM.forEach(pixel => {
             pixel.addEventListener('mouseover', () => {
                 pixel.style.backgroundColor = chooseColor.value;
             })
         })
     })
-    eraser.addEventListener('click', () => {
-        container.classList.add('erase-cursor')
-        chooseColor.value = '#ffffff'
+
+    colorMode.addEventListener('click', () => {
+        colorMode.classList.add('box-shadow');
+        clear.classList.remove('box-shadow');
+        eraser.classList.remove('box-shadow');
+        rainbow.classList.remove('box-shadow');
+
         pixelDOM.forEach(pixel => {
             pixel.addEventListener('mouseover', () => {
-                pixel.style.backgroundColor = 'rgb(255, 255, 255)';
+                pixel.style.backgroundColor = chooseColor.value;
+            })
+        })
+    })
+
+    eraser.addEventListener('click', () => {
+        container.classList.add('erase-cursor');
+
+        eraser.classList.add('box-shadow');
+        clear.classList.remove('box-shadow');
+        colorMode.classList.remove('box-shadow');
+        rainbow.classList.remove('box-shadow');
+
+        pixelDOM.forEach(pixel => {
+            pixel.addEventListener('mouseover', () => {
+                pixel.style.backgroundColor = '#ebebeb';
             })
         })
     })
 
     clear.addEventListener('click', () => {
+        clear.classList.add('box-shadow');
+        colorMode.classList.remove('box-shadow');
+        eraser.classList.remove('box-shadow');
+        rainbow.classList.remove('box-shadow');
+
         pixelDOM.forEach(pixel => {
-            pixel.style.backgroundColor = 'white'
+            pixel.style.backgroundColor = '#ebebeb'
         })
     })
 
@@ -53,6 +82,7 @@ window.onload = () => {
     })
 
     changeSizePx.addEventListener('input', (e) => {
+        
         let pxs = e.target.value
         if(pxs.length > 0){
             changeSizePx.style.backgroundColor = 'white';
@@ -81,7 +111,7 @@ window.onload = () => {
         } else {
             label.textContent = 'Turn grid off';
             pixelDOM.forEach(pixel => {
-            pixel.style.border = '1px solid black';
+            pixel.style.border = '0.5px solid black';
             });
         }
     }
@@ -102,21 +132,17 @@ window.onload = () => {
     }
 
     rainbow.addEventListener('click', () => {
-        chooseColor.value = '#000000';
+        rainbow.classList.add('box-shadow');
+        colorMode.classList.remove('box-shadow');
+        clear.classList.remove('box-shadow');
+        colorMode.classList.remove('box-shadow');
+        eraser.classList.remove('box-shadow');
+
+
         pixelDOM.forEach(pixel => {
             pixel.addEventListener('mouseover', () => {
                 pixel.style.backgroundColor = pickRandomColor();
             })
         })
     });
-
-    // const crazy = document.getElementById('crazy');
-    // crazy.addEventListener('click', () => {
-    //     chooseColor.value = '#000000';
-    //     container.addEventListener('mouseover', () => {
-    //         pixelDOM.forEach(pixel => {
-    //             pixel.style.backgroundColor = pickRandomColor();
-    //         })
-    //     })
-    // })
 }

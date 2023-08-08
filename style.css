@@ -13,7 +13,7 @@
 
 
 h3{
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .elements-container{
@@ -25,10 +25,11 @@ h3{
 }
 
 .settings{
-    margin: auto;
-    height: 50%;
+    /* margin: auto; */
+    /* height: 50%; */
     text-align: center;
     width: 30%;
+    /* border: 1px solid red; */
 }
 
 #color{
@@ -36,16 +37,30 @@ h3{
     outline: none;
     cursor: pointer;
     margin-bottom: 5px;
+    width: 35%;
+    height: 10%;
 }
 
-#eraser, #clear, #rainbow{
+.buttons{
+    width: 80%;
+    margin: auto;
+}
+
+#eraser, #clear, #rainbow, #color-mode{
+    width: 100%;
     border-radius: 5px;
     padding: 3%;
     border: none;
     outline: none;
-    background-color: white;
+    border: 1px solid black;
     cursor: pointer;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+#eraser:hover, #clear:hover, #rainbow:hover, #color-mode:hover{
+    box-shadow: 1px 1px 1px black;
+    transition: all 0.2s ease;
 }
 
 .subtitle{
@@ -87,4 +102,8 @@ h3{
 
 .erase-cursor {
     cursor: pointer; 
+}
+
+.box-shadow{
+    box-shadow: 1px 1px 1px black;
 }
