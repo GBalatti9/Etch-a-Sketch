@@ -1,15 +1,32 @@
 window.onload = () => {
 
     const container = document.querySelector('.container');
-    const createGridPx = () => {
+    
+    const createGrid = size => {
+        container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-        for (let i = 0; i <= 1024; i++) {
+        container.innerHTML = '';
+        let divs = size * size;
+
+        for (let i = 0; i < divs; i++) {
             const pixel = document.createElement('div');
             pixel.classList.add('pixel');
-            container.appendChild(pixel);
+            // container.insertAdjacentElement('beforeend', pixel);
+            container.appendChild(pixel)
         }
+
     }
-    createGridPx();
+    createGrid(20);
+    // const createGridPx = () => {
+
+    //     for (let i = 0; i <= 1024; i++) {
+    //         const pixel = document.createElement('div');
+    //         pixel.classList.add('pixel');
+    //         container.appendChild(pixel);
+    //     }
+    // }
+    // createGridPx();
     const colorMode = document.getElementById('color-mode');
     const pixelDOM = Array.from(document.querySelectorAll('.pixel'));
     const chooseColor = document.getElementById('color');
@@ -81,37 +98,38 @@ window.onload = () => {
         changeSizePx.style.backgroundColor = 'white';
     })
 
-    changeSizePx.addEventListener('input', (e) => {
+    changeSizePx.addEventListener('change', (e) => {
         
         let pxs = e.target.value
-        if(pxs.length > 0){
-            changeSizePx.style.backgroundColor = 'white';
-        } else{
-            changeSizePx.style.backgroundColor = 'rgb(84, 84, 84)';
+        
+        if (pxs >= 0 && pxs <= 100){
+            console.log(pxs);
+            createGrid(pxs);
         }
-        pixelDOM.forEach(pixel => {
-            if (pxs >= 16 && pxs <= 100) {
-                pixel.style.width = `${pxs}px`;
-                pixel.style.height = `${pxs}px`;
-            }
-        })
+
+        // pixelDOM.forEach(pixel => {
+        //     if (pxs >= 16 && pxs <= 100) {
+        //         pixel.style.width = `${pxs}px`;
+        //         pixel.style.height = `${pxs}px`;
+        //     }
+        // })
     })
 
     const gridState = document.getElementById('grid-state');
     const label = document.querySelector('label[for="grid-state"]');
-    label.textContent = 'Turn grid off'
+    label.textContent = 'Turn grid on'
 
     
     const toggleGridState = () => {
         if(gridState.checked){
-            label.textContent = 'Turn grid on';
-            pixelDOM.forEach(pixel => {
-                pixel.style.border = 'none';
-            })
-        } else {
             label.textContent = 'Turn grid off';
             pixelDOM.forEach(pixel => {
-            pixel.style.border = '0.5px solid black';
+                pixel.style.border = '0.5px solid black';
+            })
+        } else {
+            label.textContent = 'Turn grid on';
+            pixelDOM.forEach(pixel => {
+            pixel.style.border = 'none';
             });
         }
     }
@@ -123,9 +141,9 @@ window.onload = () => {
     
     const pickRandomColor = () => {
         let random = {
-            firstNumber: Math.floor(Math.random() * (256 - 0) - 0),
-            secondNumber: Math.floor(Math.random() * (256 - 0) - 0),
-            thirdNumber: Math.floor(Math.random() * (256 - 0) - 0),
+            firstNumber: Math.floor(Math.random() * (256)),
+            secondNumber: Math.floor(Math.random() * (256)),
+            thirdNumber: Math.floor(Math.random() * (256)),
         };
         let randomColor = `rgb(${random.firstNumber}, ${random.secondNumber}, ${random.thirdNumber})`
         return randomColor;
@@ -146,3 +164,9 @@ window.onload = () => {
         })
     });
 }
+
+// if(pxs.length > 0){
+        //     changeSizePx.style.backgroundColor = 'white';
+        // } else{
+        //     changeSizePx.style.backgroundColor = 'rgb(84, 84, 84)';
+        // }
